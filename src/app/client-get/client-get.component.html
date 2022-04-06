@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <td><b>Nome do Cliente</b></td>
+        <td align="center"><b>Estado</b></td>
+        <td align="center"><b>CNPJ</b></td>
+        <td align="center"><b>Ações</b></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td align="center">{{cliente.nomeCliente}}</td>
+        <td align="center">{{cliente.estado}}</td>
+        <td align="center">{{cliente.cnpj}}</td>
+        <td align="center"><a [routerLink]="['/cliente/',cliente._id]" class="btn btn-sucess"
+            routerLinkActive="router-link-active">
+            <fa name="edit"></fa> Editar
+          </a>
+          <button (click)="excluirCliente(cliente._id)" class="btn btn-danger">
+            <fa name="trash"></fa> Excluir
+        </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
