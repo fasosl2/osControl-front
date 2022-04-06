@@ -1,0 +1,116 @@
+<ng2-slim-loading-bar color="blue" height="4px"></ng2-slim-loading-bar>
+<nav class="navbar navbar-expand-sm" bg-light>
+
+  <!--NavItem Painel de OS's-->
+  <div class="nav-item">
+    <a routerLink="" class="navbar-brand" routerLinkActive="router-link-active"><b>OS Control</b></a>
+  </div>
+
+  <div class="btn-group mr-3" *ngIf="tipoUsuario && tipoUsuario!='Técnico'">
+
+    <button class="btn btn-outline-primary" id="dropdownBasic1" routerLink="" routerLinkActive="router-link-active"><fa name="desktop"></fa> Painel</button>
+
+    <!--NavItem OS's-->
+    <div ngbDropdown class="btn-group">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><fa name="newspaper-o"></fa> Ordens de Serviço</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <!--NavLink Adicionar OS-->
+        <button ngbDropdownItem routerLink="os/create" class="nav-link" routerLinkActive="router-link-active">
+          <fa name="plus"></fa> Adicionar OS
+        </button>
+        <!--NavLink Listar OSs-->
+        <button ngbDropdownItem routerLink="os" class="nav-link" routerLinkActive="router-link-active">
+          <fa name="list"></fa> Listar OS's
+        </button>
+      </div>
+    </div>
+
+    <div  ngbDropdown class="btn-group">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><fa name="users"></fa> Técnicos</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <!--NavLink Adicionar Técnico-->
+        <button ngbDropdownItem routerLink="funcionario/create" class="nav-link" routerLinkActive="router-link-active">
+          <fa name="plus"></fa> Adicionar Técnico
+        </button>
+        <!--NavLink Listar Técnicos-->
+        <button ngbDropdownItem routerLink="funcionario" class="nav-link" routerLinkActive="router-link-active">
+          <fa name="list"></fa> Listar Técnicos
+        </button>
+      </div>
+    </div>
+
+    <div ngbDropdown class="btn-group">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><fa name="handshake-o"></fa> Clientes</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <!--NavLink Adicionar Cliente-->
+        <button ngbDropdownItem routerLink="cliente/create" class="nav-link" routerLinkActive="router-link-active">
+          <fa name="plus"></fa> Adicionar Cliente
+        </button>
+        <!--NavLink Listar Clientes-->
+        <button ngbDropdownItem routerLink="cliente" class="nav-link" routerLinkActive="router-link-active">
+          <fa name="list"></fa> Listar Clientes
+        </button>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+  <!----Botão com Form para login--->
+
+
+  <div class="col text-right">
+
+    <div ngbDropdown class="d-inline-block" *ngIf="autenticado == 'autenticado'">
+      <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle><fa name="user"></fa> Usuário</button>
+      <div id="loginForm" ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu dropdown-menu-right">
+
+        <!--NavLink Adicionar Usuarios-->
+        <button ngbDropdownItem *ngIf="tipoUsuario=='Master'" routerLink="user/create" class="nav-link" routerLinkActive="router-link-active">
+          <fa name="plus"></fa> Adicionar Usuários
+        </button>
+
+        <!--NavLink Listar Usuarios-->
+        <button ngbDropdownItem *ngIf="tipoUsuario=='Master'" routerLink="user" class="nav-link" routerLinkActive="router-link-active">
+          <fa name="list"></fa> Listar Usuários
+        </button>
+
+                <!--NavLink Logout-->
+                <button ngbDropdownItem (click)="logoutUser()">
+                  <fa name="sign-out"></fa> Logout
+                </button>
+        
+
+      </div>
+    </div>
+
+
+    <div ngbDropdown class="d-inline-block" *ngIf="autenticado != 'autenticado'">
+      <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle><fa name="user"></fa> Login</button>
+      <div id="loginForm" ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu dropdown-menu-right">
+
+        <form class="px-4 py-3" [formGroup]="loginForm">
+          <div class="form-group">
+            <label>email</label>
+            <input type="email" class="form-control" placeholder="digite seu email" formControlName="email" #email>
+          </div>
+          <div class="form-group">
+            <label>Senha</label>
+            <input type="password" class="form-control" placeholder="digite sua senha" formControlName="senha" #senha>
+          </div>
+          <button (click)="loginUser(email.value, senha.value)" type="submit" class="btn btn-primary"
+            [disabled]="loginForm.pristine">
+            <fa name="sign-in"></fa> Entrar
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

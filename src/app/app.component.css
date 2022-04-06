@@ -1,0 +1,9 @@
+#loginForm{
+min-width: 15em;
+}
+
+.container {
+    margin-right: 0;
+    margin-left: 0;
+    max-width: 100%;
+}
