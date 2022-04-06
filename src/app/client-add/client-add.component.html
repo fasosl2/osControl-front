@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="adicionarClienteForm">
+      <div class="col-md-6 col-md-offset-3">
+
+        <!-- CNPJ do Cliente-->
+        <div class="form-group">
+          <label>CNPJ</label>
+          <input type="text" class="form-control" formControlName="cnpj" #cnpj>
+        </div>
+        <div *ngIf="adicionarClienteForm.controls['cnpj'].invalid
+    && (adicionarClienteForm.controls['cnpj'].dirty ||
+    adicionarClienteForm.controls['cnpj'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarClienteForm.controls['cnpj'].errors.required">
+            O campo 'CNPJ' é obrigatório.
+          </div>
+        </div>
+
+        <!-- Nome do Cliente-->
+        <div class="form-group">
+          <label>Nome Fantasia</label>
+          <input type="text" class="form-control" formControlName="nomeCliente" #nomeCliente>
+        </div>
+        <div *ngIf="adicionarClienteForm.controls['nomeCliente'].invalid
+          && (adicionarClienteForm.controls['nomeCliente'].dirty ||
+          adicionarClienteForm.controls['nomeCliente'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarClienteForm.controls['nomeCliente'].errors.required">
+            O campo 'Nome Fantasia' é obrigatório.
+          </div>
+        </div>
+
+        <!-- Estado do Cliente-->
+        <div class="form-group">
+          <label>Estado</label>
+          <select class="form-control" formControlName="estado" #estado>
+            <option [value]="EstadoArray" *ngFor="let EstadoArray of EstadoArray">{{EstadoArray}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="adicionarClienteForm.controls['estado'].invalid
+          && (adicionarClienteForm.controls['estado'].dirty ||
+          adicionarClienteForm.controls['estado'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarClienteForm.controls['estado'].errors.required">
+            O campo 'Estado' é obrigatório.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button (click)="adicionarCliente(nomeCliente.value, estado.value,cnpj.value)" class="btn btn-primary"
+            [disabled]="adicionarClienteForm.pristine || adicionarClienteForm.invalid">
+            <fa name="plus"></fa> Cliente
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
