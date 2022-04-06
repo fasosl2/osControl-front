@@ -1,0 +1,155 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="adicionarOSForm">
+      <div class="col-md-6 col-md-offset-3">
+
+        <!-- Código da OS-->
+        <div class="form-group">
+          <label>Código da OS</label>
+          <input type="text" class="form-control" formControlName="codOS" #codOS>
+        </div>
+        <div *ngIf="adicionarOSForm.controls['codOS'].invalid
+          && (adicionarOSForm.controls['codOS'].dirty ||
+          adicionarOSForm.controls['codOS'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarOSForm.controls['codOS'].errors.required">
+            O campo 'Código da OS' é obrigatório.
+          </div>
+        </div>
+
+        <!-- Status da OS-->
+        <div class="form-group">
+          <label>Status</label>
+          <select  class="form-control" formControlName="status" #status>
+            <option [value]="StatusArray" *ngFor="let StatusArray of StatusArray">{{StatusArray}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="adicionarOSForm.controls['status'].invalid
+          && (adicionarOSForm.controls['status'].dirty ||
+          adicionarOSForm.controls['status'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarOSForm.controls['status'].errors.required">
+            O campo 'Status' é obrigatório.
+          </div>
+        </div>
+
+        <!-- Cliente da OS-->
+        <div class="form-group">
+          <label>Cliente</label>
+          <select  class="form-control" formControlName="clienteOS" #clienteOS>
+            <option [value]="ClienteArray.nomeCliente" *ngFor="let ClienteArray of ClienteArray">
+              {{ClienteArray.nomeCliente}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="adicionarOSForm.controls['clienteOS'].invalid
+          && (adicionarOSForm.controls['clienteOS'].dirty ||
+          adicionarOSForm.controls['clienteOS'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarOSForm.controls['clienteOS'].errors.required">
+            O campo 'clienteOS' é obrigatório.
+          </div>
+        </div>
+
+        <!-- Data de entrada da OS-->
+        <div class="form-group">
+          <label>Data de Entrada</label>
+          <input type="date" class="form-control" formControlName="dtEntrada" #dtEntrada>
+        </div>
+        <div *ngIf="adicionarOSForm.controls['dtEntrada'].invalid
+                      && (adicionarOSForm.controls['dtEntrada'].dirty ||
+                      adicionarOSForm.controls['dtEntrada'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarOSForm.controls['dtEntrada'].errors.required">
+            O campo 'Data de Entrada' é obrigatório.
+          </div>
+        </div>
+
+        <!-- Base Operacional da OS-->
+        <div class="form-group">
+          <label>Base Operacional</label>
+          <select  class="form-control" formControlName="baseOp" #baseOp>
+            <option [value]="BaseArray" *ngFor="let BaseArray of BaseArray">{{BaseArray}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="adicionarOSForm.controls['baseOp'].invalid
+                                    && (adicionarOSForm.controls['baseOp'].dirty ||
+                                    adicionarOSForm.controls['baseOp'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarOSForm.controls['baseOp'].errors.required">
+            O campo 'Base Operacional' é obrigatório.
+          </div>
+        </div>
+
+        <!-- Técnico da OS-->
+        <div class="form-group">
+          <label>Técnico da OS</label>
+          <select  class="form-control" formControlName="tecnicoOS" #tecnicoOS>
+            <option [value]="TecnicoArray.nomeFuncionario" *ngFor="let TecnicoArray of TecnicoArray">
+              {{TecnicoArray.nomeFuncionario}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="adicionarOSForm.controls['tecnicoOS'].invalid
+                              && (adicionarOSForm.controls['tecnicoOS'].dirty ||
+                              adicionarOSForm.controls['tecnicoOS'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarOSForm.controls['tecnicoOS'].errors.required">
+            O campo 'Técnico da OS' é obrigatório.
+          </div>
+        </div>
+
+        <!-- Previsão de Conclusão do Orçamento-->
+        <div class="form-group">
+          <label>Previsão de Conclusão do Orçamento</label>
+          <input type="date" class="form-control" formControlName="dtPrevOrcamento" #dtPrevOrcamento>
+        </div>
+
+        <!-- Data de Conclusão do Orçamento da OS-->
+        <div class="form-group">
+          <label>Data do Orçamento</label>
+          <input type="date" class="form-control" formControlName="dtConcOrcamento" #dtConcOrcamento>
+        </div>
+
+        <!-- Data de Aprovação do Orçamento da OS-->
+        <div class="form-group">
+          <label>Data de Aprovação do Orçamento</label>
+          <input type="date" class="form-control" formControlName="dtAprovacao" #dtAprovacao>
+        </div>
+
+        <!-- Previsão de Conclusão da OS-->
+        <div class="form-group">
+          <label>Previsão de Conclusão da OS</label>
+          <input type="date" class="form-control" formControlName="dtPrevConclusao" #dtPrevConclusao>
+        </div>
+
+        <!-- Data de Devolução da OS-->
+        <div class="form-group">
+          <label>Data de Devolução da OS</label>
+          <input type="date" class="form-control" formControlName="dtDevolucao" #dtDevolucao>
+        </div>
+
+        <!-- Prioridade da OS-->
+        <div class="form-group">
+          <label>Prioridade</label>
+          <select  class="form-control" formControlName="prioridade" #prioridade>
+            <option [value]="PrioridadeArray" *ngFor="let PrioridadeArray of PrioridadeArray">{{PrioridadeArray}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="adicionarOSForm.controls['prioridade'].invalid
+  && (adicionarOSForm.controls['prioridade'].dirty ||
+  adicionarOSForm.controls['prioridade'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarOSForm.controls['prioridade'].errors.required">
+            O campo 'Prioridade' é obrigatório.
+          </div>
+        </div>
+
+        <!--Botão de envio do Formulário-->
+        <div class="form-group">
+          <button
+            (click)="adicionarOS(codOS.value, status.value, clienteOS.value, baseOp.value, tecnicoOS.value, dtEntrada.value, dtPrevOrcamento.value, dtConcOrcamento.value, dtAprovacao.value, dtPrevConclusao.value, dtDevolucao.value, prioridade.value)"
+            class="btn btn-primary" [disabled]="adicionarOSForm.pristine || adicionarOSForm.invalid">
+            <fa name="plus"></fa> Ordem de Serviço
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

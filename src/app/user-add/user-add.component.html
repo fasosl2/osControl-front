@@ -1,0 +1,88 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="adicionarUserForm">
+      <div class="col-md-6 col-md-offset-3">
+
+        <!-- Nome do Usuário-->
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" class="form-control" formControlName="nome" #nome>
+        </div>
+        <div *ngIf="adicionarUserForm.controls['nome'].invalid
+            && (adicionarUserForm.controls['nome'].dirty ||
+            adicionarUserForm.controls['nome'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarUserForm.controls['nome'].errors.required">
+            O campo 'Nome' é obrigatório.
+          </div>
+        </div>
+
+        <!-- Email do Usuário-->
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" class="form-control" formControlName="email" #email>
+        </div>
+        <div *ngIf="adicionarUserForm.controls['email'].invalid
+                && (adicionarUserForm.controls['email'].dirty ||
+                adicionarUserForm.controls['email'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarUserForm.controls['email'].errors.required">
+            O campo 'Email' é obrigatório.
+          </div>
+        </div>
+
+        <!-- Tipo do Usuário-->
+        <div class="form-group">
+            <label>Tipo</label>
+            <select class="form-control" formControlName="tipo" #tipo>
+              <option [value]="TipoArray" *ngFor="let TipoArray of TipoArray">{{TipoArray}}
+              </option>
+            </select>
+          </div>
+          <div *ngIf="adicionarUserForm.controls['tipo'].invalid
+            && (adicionarUserForm.controls['tipo'].dirty ||
+            adicionarUserForm.controls['tipo'].touched) " class="alert alert-danger">
+            <div *ngIf="adicionarUserForm.controls['tipo'].errors.required">
+              O campo 'Tipo' é obrigatório.
+            </div>
+          </div>
+
+          <!-- Base Operacional do Usuário-->
+          <div class="form-group">
+              <label>Base Operacional</label>
+              <select class="form-control" formControlName="baseOp" #baseOp>
+                <option [value]="BaseArray" *ngFor="let BaseArray of BaseArray">{{BaseArray}}
+                </option>
+              </select>
+            </div>
+            <div *ngIf="adicionarUserForm.controls['baseOp'].invalid
+              && (adicionarUserForm.controls['baseOp'].dirty ||
+              adicionarUserForm.controls['baseOp'].touched) " class="alert alert-danger">
+              <div *ngIf="adicionarUserForm.controls['baseOp'].errors.required">
+                O campo 'Base Operacional' é obrigatório.
+              </div>
+            </div>
+
+        <!-- Senha do Usuário-->
+        <div class="form-group">
+          <label>Senha</label>
+          <input type="text" class="form-control" formControlName="senha" #senha>
+        </div>
+        <div *ngIf="adicionarUserForm.controls['senha'].invalid
+                          && (adicionarUserForm.controls['senha'].dirty ||
+                          adicionarUserForm.controls['senha'].touched) " class="alert alert-danger">
+          <div *ngIf="adicionarUserForm.controls['senha'].errors.required">
+            O campo 'Senha' é obrigatório.
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <button (click)="adicionarUser(email.value, nome.value, tipo.value, baseOp.value, senha.value)" class="btn btn-primary"
+            [disabled]="adicionarUserForm.pristine || adicionarUserForm.invalid">
+            <fa name="plus"></fa> User
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

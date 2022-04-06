@@ -1,0 +1,27 @@
+<table *ngIf="tipoUsuario=='Master'" class="table table-striped">
+  <thead>
+    <tr>
+      <td><b>Nome do Usuário</b></td>
+      <td align="center"><b>email</b></td>
+      <td align="center"><b>Tipo de Usuário</b></td>
+      <td align="center"><b>Base Operacional</b></td>
+      <td align="center"><b>Ações</b></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td align="center">{{user.nome}}</td>
+      <td align="center">{{user.email}}</td>
+      <td align="center">{{user.tipo}}</td>
+      <td align="center">{{user.baseOp}}</td>
+      <td align="center"><a [routerLink]="['/user/',user._id]" class="btn btn-sucess"
+          routerLinkActive="router-link-active">
+          <fa name="edit"></fa> Editar
+        </a>
+        <button (click)="excluirUser(user._id)" class="btn btn-danger">
+          <fa name="trash"></fa> Excluir
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="adicionarFuncionarioForm">
+      <div class="col-md-6 col-md-offset-3">
+
+        <!-- Nome do Funcionário-->
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" class="form-control" formControlName="nomeFuncionario" #nomeFuncionario>
+        </div>
+        <div *ngIf="adicionarFuncionarioForm.controls['nomeFuncionario'].invalid
+        && (adicionarFuncionarioForm.controls['nomeFuncionario'].dirty ||
+        adicionarFuncionarioForm.controls['nomeFuncionario'].touched) " class="alert alert-danger">
+            <div *ngIf="adicionarFuncionarioForm.controls['nomeFuncionario'].errors.required">
+                O campo 'Nome' é obrigatório.
+            </div>
+        </div>
+
+        <!-- Cargo do Funcionário-->
+        <div class="form-group">
+          <label>Cargo</label>
+          <input type="text" class="form-control" formControlName="cargo" #cargo>
+        </div>
+        <div *ngIf="adicionarFuncionarioForm.controls['cargo'].invalid
+        && (adicionarFuncionarioForm.controls['cargo'].dirty ||
+        adicionarFuncionarioForm.controls['cargo'].touched) " class="alert alert-danger">
+            <div *ngIf="adicionarFuncionarioForm.controls['cargo'].errors.required">
+                O campo 'Cargo' é obrigatório.
+            </div>
+        </div>
+
+        <!-- CPF do Funcionário-->
+        <div class="form-group">
+          <label>CPF</label>
+          <input type="text" class="form-control" formControlName="cpf" #cpf>
+        </div>
+        <div *ngIf="adicionarFuncionarioForm.controls['cpf'].invalid
+        && (adicionarFuncionarioForm.controls['cpf'].dirty ||
+        adicionarFuncionarioForm.controls['cpf'].touched) " class="alert alert-danger">
+            <div *ngIf="adicionarFuncionarioForm.controls['cpf'].errors.required">
+                O campo 'CPF' é obrigatório.
+            </div>
+        </div>
+
+
+        <div class="form-group">
+          <button (click)="adicionarFuncionario(nomeFuncionario.value, cargo.value, cpf.value)" class="btn btn-primary" 
+          [disabled]="adicionarFuncionarioForm.pristine || adicionarFuncionarioForm.invalid">
+            <fa name="plus"></fa> Funcionário
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td align="center"><b>Código da OS</b></td>
+      <td align="center"><b>Status</b></td>
+      <td align="center" class="tdCliente"><b>Cliente</b></td>
+      <td align="center"><b>Data de Entrada</b></td>
+      <td align="center"><b>Técnico</b></td>
+      <td align="center"><b>Previsão de Orçamento</b></td>
+      <td align="center"><b>Data do Orçamento</b></td>
+      <td align="center"><b>Data de Aprovação</b></td>
+      <td align="center"><b>Previsão de Conclusão</b></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let os of ossGrupo" [ngStyle]="{'color' : os.prioridade == 'Alta' ?  'red':(os.prioridade == 'Média' ?  'orange':'green')}">
+      <td align="center"><b>{{os.codOS}}</b></td>
+      <td align="center"><b>{{os.status}}</b></td>
+      <td align="center"><div class="tdCliente"><b>{{os.clienteOS}}</b></div></td>
+      <td align="center"><b>{{os.dtEntrada}}</b></td>
+      <td align="center"><b>{{os.tecnicoOS}}</b></td>
+      <td align="center"><b>{{os.dtPrevOrcamento}}</b></td>
+      <td align="center"><b>{{os.dtConcOrcamento}}</b></td>
+      <td align="center"><b>{{os.dtAprovacao}}</b></td>
+      <td align="center"><b>{{os.dtPrevConclusao}}</b></td>
+      <td align="center"></td>
+    </tr>
+  </tbody>
+</table>

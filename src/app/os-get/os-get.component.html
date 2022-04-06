@@ -1,0 +1,37 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <td align="center"><b>Código OS</b></td>
+        <td align="center"><b>Status</b></td>
+        <td align="center"><b>Cliente</b></td>
+        <td align="center"><b>Base Operacional</b></td>
+        <td align="center"><b>Técnico</b></td>
+        <td align="center"><b>Data de Entrada</b></td>
+        <td align="center"><b>Data de Devolução</b></td>
+        <td align="center"><b>Prioridade</b></td>
+        <td align="center"><b>Ações</b></td>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let os of oss">
+        <td align="center">{{os.codOS}}</td>
+        <td align="center">{{os.status}}</td>
+        <td align="center">{{os.clienteOS}}</td>
+        <td align="center">{{os.baseOp}}</td>
+        <td align="center">{{os.tecnicoOS}}</td>
+        <td align="center">{{os.dtEntrada}}</td>
+        <td align="center">{{os.dtDevolucao}}</td> 
+        <td align="center">{{os.prioridade}}</td>
+        <td align="center"><a [routerLink]="['/os/',os._id]" class="btn btn-sucess"
+            routerLinkActive="router-link-active">
+            <fa name="edit"></fa> Editar
+          </a>
+          <button (click)="excluirOS(os._id)" class="btn btn-danger">
+            <fa name="trash"></fa> Excluir
+        </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
